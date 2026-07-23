@@ -33,12 +33,6 @@ namespace OniStressSchedules
             }
 
             var state = identity.gameObject.AddOrGet<StressScheduleState>();
-            if (!config.ManageBionics && identity.model == GameTags.Minions.Models.Bionic)
-            {
-                RestoreOriginalSchedule(identity, state, manager);
-                return;
-            }
-
             AmountInstance stress = Db.Get().Amounts.Stress.Lookup(identity.gameObject);
             if (stress == null)
             {

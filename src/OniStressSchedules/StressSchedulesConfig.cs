@@ -15,8 +15,6 @@ namespace OniStressSchedules
 
         public float StressedExit { get; set; } = 45f;
 
-        public bool ManageBionics { get; set; }
-
         public static StressSchedulesConfig Load(string modPath)
         {
             var configPath = Path.Combine(modPath, "config.json");

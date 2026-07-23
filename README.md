@@ -21,8 +21,8 @@ al limite.
 | Mild-Stressed → normale | sotto 20% |
 
 Le soglie si possono modificare nel file `config.json` installato assieme alla
-mod. I duplicanti bionici sono esclusi per impostazione predefinita perché il
-loro orario standard è diverso da quello dei duplicanti organici.
+mod. Sia i duplicanti organici sia quelli bionici vengono gestiti dagli stessi
+due orari di recupero.
 
 ## Build
 

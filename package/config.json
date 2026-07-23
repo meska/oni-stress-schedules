@@ -2,6 +2,5 @@
   "MildStressedEnter": 35.0,
   "StressedEnter": 60.0,
   "MildStressedExit": 20.0,
-  "StressedExit": 45.0,
-  "ManageBionics": false
+  "StressedExit": 45.0
 }
