@@ -1,0 +1,25 @@
+[h1]Stress Schedules[/h1]
+
+Automatically gives stressed duplicants more downtime and restores their original schedule when they recover.
+
+[b]Features[/b]
+[list]
+[*]Creates a [b]Mild-Stressed[/b] schedule with grouped work and downtime blocks.
+[*]Creates a [b]Stressed[/b] schedule that replaces work blocks with downtime.
+[*]Moves each duplicant between schedules according to their stress level.
+[*]Uses separate entry and recovery thresholds to avoid rapid schedule switching.
+[*]Restores each duplicant's previous schedule after recovery.
+[*]Supports both standard and Bionic duplicants.
+[*]Thresholds can be customized in [code]config.json[/code].
+[/list]
+
+[b]Default thresholds[/b]
+[list]
+[*]Normal → Mild-Stressed: 35%
+[*]Mild-Stressed → Stressed: 60%
+[*]Stressed → Mild-Stressed: below 45%
+[*]Mild-Stressed → original schedule: below 20%
+[/list]
+
+[b]Source code and releases[/b]
+https://github.com/meska/oni-stress-schedules
