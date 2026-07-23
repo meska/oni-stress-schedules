@@ -1,5 +1,7 @@
 using HarmonyLib;
 using KMod;
+using PeterHan.PLib.Core;
+using PeterHan.PLib.Options;
 using UnityEngine;
 
 namespace OniStressSchedules
@@ -8,8 +10,10 @@ namespace OniStressSchedules
     {
         public override void OnLoad(Harmony harmony)
         {
-            StressScheduleController.Configure(StressSchedulesConfig.Load(path));
             base.OnLoad(harmony);
+            PUtil.InitLibrary();
+            new POptions().RegisterOptions(this, typeof(StressSchedulesConfig));
+            StressScheduleController.Configure(StressSchedulesConfig.Load(path));
             Debug.Log("[Stress Schedules] Mod loaded.");
         }
     }

@@ -1,3 +1,4 @@
+using System.Linq;
 using Klei.AI;
 using UnityEngine;
 
@@ -19,8 +20,13 @@ namespace OniStressSchedules
 
         public static void InitializeSchedules(ScheduleManager manager)
         {
-            mildSchedule = FindOrCreateSchedule(manager, MildScheduleName, mild: true);
-            stressedSchedule = FindOrCreateSchedule(manager, StressedScheduleName, mild: false);
+            var template = manager.GetSchedules().Find(
+                schedule => schedule.name != MildScheduleName
+                    && schedule.name != StressedScheduleName);
+            mildSchedule = FindOrCreateSchedule(manager, MildScheduleName);
+            stressedSchedule = FindOrCreateSchedule(manager, StressedScheduleName);
+            ApplySchedulePattern(mildSchedule, template, mild: true);
+            ApplySchedulePattern(stressedSchedule, template, mild: false);
             Debug.Log("[Stress Schedules] Automatic schedules are ready.");
         }
 
@@ -87,8 +93,7 @@ namespace OniStressSchedules
 
         private static Schedule FindOrCreateSchedule(
             ScheduleManager manager,
-            string name,
-            bool mild)
+            string name)
         {
             var existing = manager.GetSchedules().Find(schedule => schedule.name == name);
             if (existing != null)
@@ -100,29 +105,55 @@ namespace OniStressSchedules
                 Db.Get().ScheduleGroups.allGroups,
                 name,
                 alarmOn: false);
+            return schedule;
+        }
 
+        private static void ApplySchedulePattern(
+            Schedule schedule,
+            Schedule template,
+            bool mild)
+        {
+            if (schedule == null || template == null)
+            {
+                return;
+            }
+
+            var groups = Db.Get().ScheduleGroups.allGroups;
             var workGroup = Db.Get().ScheduleGroups.Worktime;
             var breakGroup = Db.Get().ScheduleGroups.Recreation;
+            var totalWorkBlocks = template.GetBlocks().Count(
+                block => block.GroupId == workGroup.Id);
             var workBlockIndex = 0;
 
-            for (var blockIndex = 0; blockIndex < schedule.GetBlocks().Count; blockIndex++)
+            var blockCount = Mathf.Min(
+                schedule.GetBlocks().Count,
+                template.GetBlocks().Count);
+            for (var blockIndex = 0; blockIndex < blockCount; blockIndex++)
             {
-                if (schedule.GetBlock(blockIndex).GroupId != workGroup.Id)
+                var templateGroupId = template.GetBlock(blockIndex).GroupId;
+                var templateGroup = groups.Find(group => group.Id == templateGroupId);
+                if (templateGroup == null)
                 {
                     continue;
                 }
 
-                // Mild alterna lavoro e pausa; stressed converte ogni ora di lavoro.
-                var replaceWithBreak = !mild || workBlockIndex % 2 == 1;
-                if (replaceWithBreak)
+                if (templateGroupId == workGroup.Id)
                 {
-                    schedule.SetBlockGroup(blockIndex, breakGroup);
+                    var replaceWithBreak = !mild
+                        || SchedulePattern.UseBreakInMild(
+                            workBlockIndex,
+                            totalWorkBlocks);
+                    schedule.SetBlockGroup(
+                        blockIndex,
+                        replaceWithBreak ? breakGroup : workGroup);
+                    workBlockIndex++;
                 }
-
-                workBlockIndex++;
+                else
+                {
+                    // Ripristina anche i blocchi alterati dalla disposizione v1.
+                    schedule.SetBlockGroup(blockIndex, templateGroup);
+                }
             }
-
-            return schedule;
         }
 
         private static void ApplyStressSchedule(

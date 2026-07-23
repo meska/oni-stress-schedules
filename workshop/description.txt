@@ -10,7 +10,8 @@ Automatically gives stressed duplicants more downtime and restores their origina
 [*]Uses separate entry and recovery thresholds to avoid rapid schedule switching.
 [*]Restores each duplicant's previous schedule after recovery.
 [*]Supports both standard and Bionic duplicants.
-[*]Thresholds can be customized in [code]config.json[/code].
+[*]Thresholds can be customized from the in-game [b]Options[/b] button.
+[*]Option changes apply immediately and persist across local/Workshop updates.
 [/list]
 
 [b]Default thresholds[/b]

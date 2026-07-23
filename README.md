@@ -6,8 +6,8 @@
 
 Mod locale per Oxygen Not Included che crea due orari automatici:
 
-- `Mild-Stressed`: metà dei blocchi di lavoro dell'orario predefinito diventano
-  pausa, alternati ai blocchi di lavoro.
+- `Mild-Stressed`: la prima metà dei blocchi di lavoro resta lavoro e la seconda
+  metà diventa pausa, in due gruppi per evitare spostamenti ogni ora.
 - `Stressed`: tutti i blocchi di lavoro dell'orario predefinito diventano pausa.
 
 Ogni duplicante viene spostato automaticamente in base al proprio stress e
@@ -24,9 +24,10 @@ al limite.
 | Stressed → Mild-Stressed | sotto 45% |
 | Mild-Stressed → normale | sotto 20% |
 
-Le soglie si possono modificare nel file `config.json` installato assieme alla
-mod. Sia i duplicanti organici sia quelli bionici vengono gestiti dagli stessi
-due orari di recupero.
+Le soglie si modificano direttamente da `Mods` → `Stress Schedules` →
+`Opzioni`. La nuova configurazione viene applicata subito e viene conservata
+anche passando dall'installazione locale a quella Workshop. Sia i duplicanti
+organici sia quelli bionici vengono gestiti dagli stessi due orari di recupero.
 
 ## Build
 
