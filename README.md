@@ -1,4 +1,4 @@
-# ONI Stress Schedules
+# Stress Schedules
 
 Mod locale per Oxygen Not Included che crea due orari automatici:
 

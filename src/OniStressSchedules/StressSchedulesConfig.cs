@@ -23,7 +23,7 @@ namespace OniStressSchedules
             {
                 if (!File.Exists(configPath))
                 {
-                    Debug.LogWarning("[ONI Stress Schedules] config.json not found; using defaults.");
+                    Debug.LogWarning("[Stress Schedules] config.json not found; using defaults.");
                     return new StressSchedulesConfig();
                 }
 
@@ -32,7 +32,7 @@ namespace OniStressSchedules
 
                 if (config == null || !config.IsValid())
                 {
-                    Debug.LogWarning("[ONI Stress Schedules] Invalid config.json; using defaults.");
+                    Debug.LogWarning("[Stress Schedules] Invalid config.json; using defaults.");
                     return new StressSchedulesConfig();
                 }
 
@@ -42,7 +42,7 @@ namespace OniStressSchedules
             {
                 // Se el JSON xe roto, meio zogar coi default che butar zo el salvataggio.
                 Debug.LogWarning(
-                    $"[ONI Stress Schedules] Cannot read config.json; using defaults. {exception.Message}");
+                    $"[Stress Schedules] Cannot read config.json; using defaults. {exception.Message}");
                 return new StressSchedulesConfig();
             }
         }

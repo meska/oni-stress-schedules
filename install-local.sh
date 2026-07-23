@@ -16,4 +16,4 @@ if [[ ! -f "$mod_dir/config.json" ]]; then
 fi
 cp "$dll_path" "$mod_dir/OniStressSchedules.dll"
 
-echo "Installed ONI Stress Schedules in: $mod_dir"
+echo "Installed Stress Schedules in: $mod_dir"

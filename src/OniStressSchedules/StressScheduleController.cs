@@ -21,7 +21,7 @@ namespace OniStressSchedules
         {
             mildSchedule = FindOrCreateSchedule(manager, MildScheduleName, mild: true);
             stressedSchedule = FindOrCreateSchedule(manager, StressedScheduleName, mild: false);
-            Debug.Log("[ONI Stress Schedules] Automatic schedules are ready.");
+            Debug.Log("[Stress Schedules] Automatic schedules are ready.");
         }
 
         public static void Update(MinionIdentity identity)
@@ -148,7 +148,7 @@ namespace OniStressSchedules
             state.Mode = desiredMode;
 
             Debug.Log(
-                $"[ONI Stress Schedules] {identity.GetProperName()} -> {target.name}");
+                $"[Stress Schedules] {identity.GetProperName()} -> {target.name}");
         }
 
         private static void RestoreOriginalSchedule(
@@ -169,7 +169,7 @@ namespace OniStressSchedules
             {
                 ChangeAssignment(current, target, schedulable);
                 Debug.Log(
-                    $"[ONI Stress Schedules] {identity.GetProperName()} -> {target.name}");
+                    $"[Stress Schedules] {identity.GetProperName()} -> {target.name}");
             }
 
             state.Clear();

@@ -10,7 +10,7 @@ namespace OniStressSchedules
         {
             StressScheduleController.Configure(StressSchedulesConfig.Load(path));
             base.OnLoad(harmony);
-            Debug.Log("[ONI Stress Schedules] Mod loaded.");
+            Debug.Log("[Stress Schedules] Mod loaded.");
         }
     }
 
