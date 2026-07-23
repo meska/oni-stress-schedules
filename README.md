@@ -32,7 +32,8 @@ Tutte e sei le soglie si modificano direttamente da `Mods` →
 `Stress Schedules` → `Opzioni`. La nuova configurazione viene applicata subito
 e viene conservata anche passando dall'installazione locale a quella Workshop.
 Sia i duplicanti organici sia quelli bionici vengono gestiti dagli stessi due
-orari di recupero.
+orari di recupero. I cambi automatici restano sicuri anche mentre la schermata
+degli orari è aperta o dopo la rimozione di un duplicante.
 
 ## Build
 

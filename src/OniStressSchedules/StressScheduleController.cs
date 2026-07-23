@@ -253,11 +253,19 @@ namespace OniStressSchedules
             Schedule target,
             Schedulable schedulable)
         {
-            if (target == null || current == target)
+            if (target == null || schedulable == null)
             {
                 return;
             }
 
+            // La UI de ONI no filtra le Ref morte quando ricostruisse i widget.
+            target.ClearNullReferences();
+            if (current == target)
+            {
+                return;
+            }
+
+            current?.ClearNullReferences();
             current?.Unassign(schedulable);
             target.Assign(schedulable);
         }
