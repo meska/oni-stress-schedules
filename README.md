@@ -2,6 +2,8 @@
 
 ![Workshop preview](package/preview.png)
 
+[Install from Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3770102539)
+
 Mod locale per Oxygen Not Included che crea due orari automatici:
 
 - `Mild-Stressed`: metà dei blocchi di lavoro dell'orario predefinito diventano
