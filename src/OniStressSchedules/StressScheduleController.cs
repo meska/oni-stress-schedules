@@ -45,6 +45,12 @@ namespace OniStressSchedules
                 return;
             }
 
+            var healthPercent = GetHealthPercent(identity);
+            state.HealthRecoveryActive = StressPolicy.NeedsHealthRecovery(
+                state.HealthRecoveryActive,
+                healthPercent,
+                config);
+
             var schedulable = identity.GetComponent<Schedulable>();
             var currentSchedule = manager.GetSchedule(schedulable);
             if (state.Mode == StressMode.Normal)
@@ -59,7 +65,10 @@ namespace OniStressSchedules
                 }
             }
 
-            var desiredMode = StressPolicy.Decide(state.Mode, stress.value, config);
+            // La salute bassa ga precedenza assoluta sulla normale logica stress.
+            var desiredMode = state.HealthRecoveryActive
+                ? StressMode.Stressed
+                : StressPolicy.Decide(state.Mode, stress.value, config);
             if (desiredMode == state.Mode)
             {
                 // Finché no rientra, la modalità automatica resta davvero assegnata.
@@ -74,6 +83,17 @@ namespace OniStressSchedules
             }
 
             ApplyStressSchedule(identity, state, manager, desiredMode);
+        }
+
+        private static float GetHealthPercent(MinionIdentity identity)
+        {
+            var health = identity.GetComponent<Health>();
+            if (health == null || health.maxHitPoints <= 0f)
+            {
+                return 100f;
+            }
+
+            return Mathf.Clamp(health.hitPoints / health.maxHitPoints * 100f, 0f, 100f);
         }
 
         private static void EnforceActiveSchedule(

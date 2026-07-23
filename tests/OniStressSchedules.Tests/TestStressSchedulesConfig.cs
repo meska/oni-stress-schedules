@@ -10,5 +10,9 @@ namespace OniStressSchedules
         public float MildStressedExit { get; set; } = 20f;
 
         public float StressedExit { get; set; } = 45f;
+
+        public float HealthStressedEnter { get; set; } = 40f;
+
+        public float HealthStressedExit { get; set; } = 60f;
     }
 }

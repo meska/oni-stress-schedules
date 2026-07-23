@@ -6,6 +6,17 @@ namespace OniStressSchedules
     /// </summary>
     public static class StressPolicy
     {
+        public static bool NeedsHealthRecovery(
+            bool recoveryActive,
+            float healthPercent,
+            StressSchedulesConfig config)
+        {
+            // L'isteresi sanitaria evita cambi d'orario continui fra 40% e 60%.
+            return recoveryActive
+                ? healthPercent < config.HealthStressedExit
+                : healthPercent <= config.HealthStressedEnter;
+        }
+
         public static StressMode Decide(
             StressMode current,
             float stress,

@@ -11,10 +11,14 @@ namespace OniStressSchedules
         [Serialize]
         public StressMode Mode;
 
+        [Serialize]
+        public bool HealthRecoveryActive;
+
         public void Clear()
         {
             OriginalScheduleName = null;
             Mode = StressMode.Normal;
+            HealthRecoveryActive = false;
         }
     }
 }

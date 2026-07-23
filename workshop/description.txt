@@ -7,6 +7,8 @@ Automatically gives stressed duplicants more downtime and restores their origina
 [*]Creates a [b]Mild-Stressed[/b] schedule with grouped work and downtime blocks.
 [*]Creates a [b]Stressed[/b] schedule that replaces work blocks with downtime.
 [*]Moves each duplicant between schedules according to their stress level.
+[*]Immediately forces duplicants at 40% health or below onto Stressed until they recover to 60%.
+[*]Health recovery takes priority over stress and uses its own hysteresis.
 [*]Uses separate entry and recovery thresholds to avoid rapid schedule switching.
 [*]Restores each duplicant's previous schedule after recovery.
 [*]Supports both standard and Bionic duplicants.
@@ -20,6 +22,8 @@ Automatically gives stressed duplicants more downtime and restores their origina
 [*]Mild-Stressed → Stressed: 60%
 [*]Stressed → Mild-Stressed: below 45%
 [*]Mild-Stressed → original schedule: below 20%
+[*]Any schedule → Stressed: health at or below 40%
+[*]Leave forced health recovery: health at or above 60%
 [/list]
 
 [b]Source code and releases[/b]

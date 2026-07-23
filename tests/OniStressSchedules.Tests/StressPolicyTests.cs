@@ -37,5 +37,21 @@ namespace OniStressSchedules.Tests
         {
             Assert.Equal(expected, StressPolicy.Decide(StressMode.Stressed, stress, config));
         }
+
+        [Theory]
+        [InlineData(false, 40f, true)]
+        [InlineData(false, 40.1f, false)]
+        [InlineData(true, 59.9f, true)]
+        [InlineData(true, 60f, false)]
+        [InlineData(true, 100f, false)]
+        public void HealthRecoveryUsesSeparateEnterAndExitThresholds(
+            bool recoveryActive,
+            float healthPercent,
+            bool expected)
+        {
+            Assert.Equal(
+                expected,
+                StressPolicy.NeedsHealthRecovery(recoveryActive, healthPercent, config));
+        }
     }
 }

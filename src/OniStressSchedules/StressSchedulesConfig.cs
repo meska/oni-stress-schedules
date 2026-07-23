@@ -43,6 +43,22 @@ namespace OniStressSchedules
         [JsonProperty]
         public float StressedExit { get; set; } = 45f;
 
+        [Option(
+            "Enter health recovery (%)",
+            "Health at or below this level forces a duplicant onto the Stressed schedule.",
+            "Health thresholds")]
+        [Limit(0, 100, 1)]
+        [JsonProperty]
+        public float HealthStressedEnter { get; set; } = 40f;
+
+        [Option(
+            "Leave health recovery (%)",
+            "A duplicant stays on the Stressed schedule until health reaches this level.",
+            "Health thresholds")]
+        [Limit(0, 100, 1)]
+        [JsonProperty]
+        public float HealthStressedExit { get; set; } = 60f;
+
         public static StressSchedulesConfig Load(string modPath)
         {
             try
@@ -95,7 +111,10 @@ namespace OniStressSchedules
                 && MildStressedExit < MildStressedEnter
                 && MildStressedEnter < StressedExit
                 && StressedExit < StressedEnter
-                && StressedEnter <= 100f;
+                && StressedEnter <= 100f
+                && HealthStressedEnter >= 0f
+                && HealthStressedEnter < HealthStressedExit
+                && HealthStressedExit <= 100f;
         }
 
         private static void MigrateLegacyConfig(string modPath)
