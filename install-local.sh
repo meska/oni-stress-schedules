@@ -10,6 +10,7 @@ dotnet build "$project_dir/src/OniStressSchedules/OniStressSchedules.csproj" -c 
 mkdir -p "$mod_dir"
 cp "$project_dir/package/mod.yaml" "$mod_dir/mod.yaml"
 cp "$project_dir/package/mod_info.yaml" "$mod_dir/mod_info.yaml"
+cp "$project_dir/package/preview.png" "$mod_dir/preview.png"
 # No sta coprir le soglie che l'utente ga personalizà.
 if [[ ! -f "$mod_dir/config.json" ]]; then
   cp "$project_dir/package/config.json" "$mod_dir/config.json"

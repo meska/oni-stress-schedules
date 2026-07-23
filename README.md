@@ -1,5 +1,7 @@
 # Stress Schedules
 
+![Workshop preview](package/preview.png)
+
 Mod locale per Oxygen Not Included che crea due orari automatici:
 
 - `Mild-Stressed`: metà dei blocchi di lavoro dell'orario predefinito diventano
