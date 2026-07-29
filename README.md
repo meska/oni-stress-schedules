@@ -33,7 +33,9 @@ Tutte e sei le soglie si modificano direttamente da `Mods` →
 e viene conservata anche passando dall'installazione locale a quella Workshop.
 Sia i duplicanti organici sia quelli bionici vengono gestiti dagli stessi due
 orari di recupero. I cambi automatici restano sicuri anche mentre la schermata
-degli orari è aperta o dopo la rimozione di un duplicante.
+degli orari è aperta o dopo la rimozione di un duplicante. All'avvio e subito
+prima di aprire la schermata, la mod elimina inoltre eventuali assegnazioni
+obsolete rimaste nel salvataggio.
 
 ## Build
 

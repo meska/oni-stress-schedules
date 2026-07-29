@@ -27,6 +27,16 @@ namespace OniStressSchedules
         }
     }
 
+    [HarmonyPatch(typeof(ScheduleScreen), "OnSpawn")]
+    internal static class ScheduleScreenOnSpawnPatch
+    {
+        private static void Prefix()
+        {
+            // Un duplicante può sparire molto dopo l'avvio: ripulisci appena prima della UI.
+            StressScheduleController.ClearInvalidAssignments(ScheduleManager.Instance);
+        }
+    }
+
     [HarmonyPatch(typeof(MinionConfig), nameof(MinionConfig.CreatePrefab))]
     internal static class MinionConfigCreatePrefabPatch
     {

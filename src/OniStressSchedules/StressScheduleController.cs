@@ -20,6 +20,7 @@ namespace OniStressSchedules
 
         public static void InitializeSchedules(ScheduleManager manager)
         {
+            ClearInvalidAssignments(manager);
             var template = manager.GetSchedules().Find(
                 schedule => schedule.name != MildScheduleName
                     && schedule.name != StressedScheduleName);
@@ -28,6 +29,20 @@ namespace OniStressSchedules
             ApplySchedulePattern(mildSchedule, template, mild: true);
             ApplySchedulePattern(stressedSchedule, template, mild: false);
             Debug.Log("[Stress Schedules] Automatic schedules are ready.");
+        }
+
+        internal static void ClearInvalidAssignments(ScheduleManager manager)
+        {
+            if (manager == null)
+            {
+                return;
+            }
+
+            foreach (var schedule in manager.GetSchedules())
+            {
+                // Tira via le Ref morte prima che la UI ghe provi a far GetComponent.
+                schedule?.ClearNullReferences();
+            }
         }
 
         public static void Update(MinionIdentity identity)
