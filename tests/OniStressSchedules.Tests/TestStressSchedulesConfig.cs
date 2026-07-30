@@ -14,5 +14,7 @@ namespace OniStressSchedules
         public float HealthStressedEnter { get; set; } = 40f;
 
         public float HealthStressedExit { get; set; } = 60f;
+
+        public int MinimumWorkingDuplicants { get; set; } = 1;
     }
 }

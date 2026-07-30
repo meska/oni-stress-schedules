@@ -15,7 +15,9 @@ salute ha precedenza: al 40% o meno viene forzato su `Stressed` finché non
 recupera almeno il 60%. Al termine del recupero torna la normale logica dello
 stress e, quando si riprende del tutto, viene ripristinato l'orario originale.
 Le soglie separate di ingresso e uscita evitano continui cambi vicino ai
-limiti.
+limiti. Per evitare che una crisi fermi completamente la colonia, almeno un
+duplicante resta sul proprio orario di lavoro anche quando tutti avrebbero
+bisogno di recuperare.
 
 ## Soglie predefinite
 
@@ -28,9 +30,11 @@ limiti.
 | Qualsiasi orario → Stressed | salute ≤ 40% |
 | Fine recupero salute | salute ≥ 60% |
 
-Tutte e sei le soglie si modificano direttamente da `Mods` →
+Tutte e sei le soglie e il numero minimo di lavoratori si modificano da `Mods` →
 `Stress Schedules` → `Opzioni`. La nuova configurazione viene applicata subito
 e viene conservata anche passando dall'installazione locale a quella Workshop.
+La protezione forza di default almeno un duplicante al lavoro; impostandola a
+zero si può disattivare.
 Sia i duplicanti organici sia quelli bionici vengono gestiti dagli stessi due
 orari di recupero. I cambi automatici restano sicuri anche mentre la schermata
 degli orari è aperta o dopo la rimozione di un duplicante. All'avvio e subito

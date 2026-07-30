@@ -19,5 +19,6 @@
     <Compile Include="../../src/OniStressSchedules/StressMode.cs" Link="StressMode.cs" />
     <Compile Include="../../src/OniStressSchedules/StressPolicy.cs" Link="StressPolicy.cs" />
     <Compile Include="../../src/OniStressSchedules/SchedulePattern.cs" Link="SchedulePattern.cs" />
+    <Compile Include="../../src/OniStressSchedules/WorkforcePolicy.cs" Link="WorkforcePolicy.cs" />
   </ItemGroup>
 </Project>

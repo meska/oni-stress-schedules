@@ -84,6 +84,19 @@ namespace OniStressSchedules
             var desiredMode = state.HealthRecoveryActive
                 ? StressMode.Stressed
                 : StressPolicy.Decide(state.Mode, stress.value, config);
+            if (desiredMode != StressMode.Normal
+                && NeedsWorkingProtection(manager, currentSchedule))
+            {
+                if (IsManagedSchedule(currentSchedule))
+                {
+                    RestoreOriginalSchedule(identity, state, manager);
+                    Debug.Log(
+                        $"[Stress Schedules] {identity.GetProperName()} kept working by workforce protection.");
+                }
+
+                return;
+            }
+
             if (desiredMode == state.Mode)
             {
                 // Finché no rientra, la modalità automatica resta davvero assegnata.
@@ -261,6 +274,24 @@ namespace OniStressSchedules
         private static bool IsManagedSchedule(Schedule schedule)
         {
             return schedule == mildSchedule || schedule == stressedSchedule;
+        }
+
+        private static bool NeedsWorkingProtection(
+            ScheduleManager manager,
+            Schedule currentSchedule)
+        {
+            var workingDuplicants = Components.LiveMinionIdentities.Items.Count(
+                identity =>
+                {
+                    var schedulable = identity?.GetComponent<Schedulable>();
+                    return schedulable != null
+                        && !IsManagedSchedule(manager.GetSchedule(schedulable));
+                });
+
+            return WorkforcePolicy.NeedsWorkingProtection(
+                IsManagedSchedule(currentSchedule),
+                workingDuplicants,
+                config.MinimumWorkingDuplicants);
         }
 
         private static void ChangeAssignment(

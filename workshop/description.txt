@@ -1,5 +1,5 @@
 [h1]Stress Schedules[/h1]
-[b]Current version: 2.1.2[/b]
+[b]Current version: 2.2.0[/b]
 
 Automatically gives stressed duplicants more downtime and restores their original schedule when they recover.
 
@@ -13,6 +13,7 @@ Automatically gives stressed duplicants more downtime and restores their origina
 [*]Uses separate entry and recovery thresholds to avoid rapid schedule switching.
 [*]Restores each duplicant's previous schedule after recovery.
 [*]Supports both standard and Bionic duplicants.
+[*]Keeps at least one duplicant working during colony-wide stress; the minimum is configurable.
 [*]Safely updates assignments while the Schedules screen is open.
 [*]Cleans stale duplicant assignments before loading or opening the Schedules screen.
 [*]Thresholds can be customized from the in-game [b]Options[/b] button.

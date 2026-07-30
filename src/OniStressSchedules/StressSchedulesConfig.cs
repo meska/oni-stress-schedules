@@ -59,6 +59,14 @@ namespace OniStressSchedules
         [JsonProperty]
         public float HealthStressedExit { get; set; } = 60f;
 
+        [Option(
+            "Minimum working duplicants",
+            "Keeps at least this many duplicants on their normal schedules, even when more need recovery. Set to 0 to disable.",
+            "Workforce protection")]
+        [Limit(0, 100, 1)]
+        [JsonProperty]
+        public int MinimumWorkingDuplicants { get; set; } = 1;
+
         public static StressSchedulesConfig Load(string modPath)
         {
             try
@@ -89,7 +97,7 @@ namespace OniStressSchedules
             if (!IsValid())
             {
                 Debug.LogWarning(
-                    "[Stress Schedules] Threshold order is invalid; restoring defaults.");
+                    "[Stress Schedules] Options are invalid; restoring defaults.");
                 var defaults = new StressSchedulesConfig();
                 POptions.WriteSettings(defaults);
                 StressScheduleController.Configure(defaults);
@@ -114,7 +122,9 @@ namespace OniStressSchedules
                 && StressedEnter <= 100f
                 && HealthStressedEnter >= 0f
                 && HealthStressedEnter < HealthStressedExit
-                && HealthStressedExit <= 100f;
+                && HealthStressedExit <= 100f
+                && MinimumWorkingDuplicants >= 0
+                && MinimumWorkingDuplicants <= 100;
         }
 
         private static void MigrateLegacyConfig(string modPath)

@@ -4,5 +4,6 @@
   "MildStressedExit": 20.0,
   "StressedExit": 45.0,
   "HealthStressedEnter": 40.0,
-  "HealthStressedExit": 60.0
+  "HealthStressedExit": 60.0,
+  "MinimumWorkingDuplicants": 1
 }
