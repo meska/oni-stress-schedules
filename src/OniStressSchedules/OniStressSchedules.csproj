@@ -5,9 +5,9 @@
     <Nullable>disable</Nullable>
     <AssemblyName>OniStressSchedules</AssemblyName>
     <RootNamespace>OniStressSchedules</RootNamespace>
-    <Version>2.2.0</Version>
-    <AssemblyVersion>2.2.0.0</AssemblyVersion>
-    <FileVersion>2.2.0.0</FileVersion>
+    <Version>2.3.0</Version>
+    <AssemblyVersion>2.3.0.0</AssemblyVersion>
+    <FileVersion>2.3.0.0</FileVersion>
     <OniManagedDir Condition="'$(OniManagedDir)' == ''">$(HOME)/Library/Application Support/Steam/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</OniManagedDir>
     <ILRepackTargetsFile>$(MSBuildProjectDirectory)/ILRepack.Disabled.targets</ILRepackTargetsFile>
   </PropertyGroup>
@@ -29,6 +29,14 @@
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>$(OniManagedDir)/Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>$(OniManagedDir)/com.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>$(OniManagedDir)/Ionic.Zip.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">

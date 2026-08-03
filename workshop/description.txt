@@ -1,5 +1,6 @@
 [h1]Stress Schedules[/h1]
-[b]Current version: 2.2.0[/b]
+[b]Current version: 2.3.0[/b]
+[b]Version 2.3:[/b] Adds a built-in self-updater that bypasses stale ONI legacy Workshop caches, validates the current Steam package, preserves configuration, and installs it safely after restart.
 
 Automatically gives stressed duplicants more downtime and restores their original schedule when they recover.
 
@@ -18,6 +19,7 @@ Automatically gives stressed duplicants more downtime and restores their origina
 [*]Cleans stale duplicant assignments before loading or opening the Schedules screen.
 [*]Thresholds can be customized from the in-game [b]Options[/b] button.
 [*]Option changes apply immediately and persist across local/Workshop updates.
+[*]Checks the authoritative Steam package directly when ONI's legacy Workshop cache is stale.
 [/list]
 
 [b]Default thresholds[/b]
