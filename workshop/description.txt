@@ -1,5 +1,6 @@
 [h1]Stress Schedules[/h1]
-[b]Current version: 2.3.0[/b]
+[b]Current version: 2.3.1[/b]
+[b]Version 2.3.1:[/b] Prevents the Schedules screen from crashing on destroyed duplicant references that survive ONI's standard cleanup.
 [b]Version 2.3:[/b] Adds a built-in self-updater that bypasses stale ONI legacy Workshop caches, validates the current Steam package, preserves configuration, and installs it safely after restart.
 
 Automatically gives stressed duplicants more downtime and restores their original schedule when they recover.

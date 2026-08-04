@@ -50,6 +50,16 @@ namespace OniStressSchedules
         }
     }
 
+    [HarmonyPatch(typeof(ScheduleMinionWidget), nameof(ScheduleMinionWidget.Setup))]
+    internal static class ScheduleMinionWidgetSetupPatch
+    {
+        private static bool Prefix(Schedulable schedulable)
+        {
+            // Unity pol tegnir un riferimento .NET a un duplicante za distrutto.
+            return schedulable != null;
+        }
+    }
+
     [HarmonyPatch(typeof(MinionConfig), nameof(MinionConfig.CreatePrefab))]
     internal static class MinionConfigCreatePrefabPatch
     {
